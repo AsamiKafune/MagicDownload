@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Download</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body {
+        background-color: rgb(30, 30, 30);
+    }
+
+    .titlebar {
+        -webkit-user-select: none;
+        -webkit-app-region: drag;
+    }
+
+    ::selection {
+        background: #ffffff00;
+    }
+</style>
+<script>
+    const { ipcRenderer } = require('electron');
+    let ipc = ipcRenderer
+</script>
+
+<body>
+    <div class="min-h-[25px] titlebar fixed z-10 w-full">
+        <button onclick="closeApp()"
+            class="p-2 h-[40px] w-[40px] rounded-xl bg-white/5 text-white fixed z-[11] top-5 right-5">
+            ✕
+        </button>
+    </div>
+    <img src="./bg.png" class="pointer-events-none fixed bottom-0 right-[-20%] -z-10">
+    <div class="flex justify-center min-h-screen items-center">
+        <div class="bg-zinc-900/90 backdrop-blur-sm text-white shadow-xl rounded-xl grid gap-3 min-w-[250px] p-4">
+            <div class="text-center">
+                <h1 class="text-3xl">
+                    MAGIC
+                </h1>
+                <p class="text-xs">
+                    DOWNLOAD
+                </p>
+                <div class="mt-5 text-sm bg-white/10 px-5 py-3 rounded-xl">
+                    Found a new version updating<br> Please wait a moment.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bottom-5 left-5 fixed text-white opacity-20">© <a class="cursor-pointer"
+            onclick="creator_web()">MagicLab</a> | <a class="cursor-pointer" onclick="creator_yt()">Kafune CH.</a>
+    </footer>
+
+</body>
+
+<script>
+
+    function creator_yt() {
+        shell.openExternal('https://youtube.com/@kafunech');
+    }
+    function creator_web() {
+        shell.openExternal('https://kfn.moe');
+    }
+
+    function closeApp() {
+        ipc.send('close-app');
+    }
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "magicdownload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "electron": "^27.0.4",
+    "electron-packager": "^17.1.1",
+    "tailwindcss": "^3.2.4"
+  },
+  "scripts": {
+    "rebuild-robotjs": "electron-rebuild -f -w robotjs",
+    "e-start": "electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "pack:win64": "electron-packager . MagicDownload --ignore=libs/ --ignore=output/ --ignore=version.txt --out=dist/win --platform=win32 --arch=x64 --asar=true --icon=icon.ico",
+    "build": "npm run pack:win64",
+    "dist": "build"
+  },
+  "build": {
+    "appId":"moe.magiclab.magicdownload",
+    "win": {
+      "icon":"icon.ico"
+    },
+    "files": [
+      "public/**/*"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cross-fetch": "^4.0.0",
+    "electron-dl": "^3.5.1"
+  }
+}
